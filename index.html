@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name=viewport content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name=description content="TBatch converta list of dates into any output format " />
+    <title>Timestamp Converter</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div id="timeconverter">
+      <div class="header">
+        <h1>Timestamp Converter</h1>
+        <p>Put in a list of dates separated by linebreaks. You can change the input and output format manually or select from the examples. Tokens are similar to the LDML format. A list of available tokens can be found here: <a href="http://momentjs.com/docs/#/displaying/format/">http://momentjs.com/docs/#/displaying/format/</a></p>
+      </div>
+      <div class="config">
+        <label>Input format:
+          <input v-model="iFormat" spellcheck="false" />
+          <section>
+            Examples:
+            <button v-for="option in formatsInput" v-on:click="iFormat = option.value">
+              {{ option.text }}
+            </button>
+          </section>
+        </label>
+        <label>Output format:
+          <input v-model="oFormat" spellcheck="false" />
+          <section>
+            Examples:
+            <button v-for="option in formatsOutput" v-on:click="oFormat = option.value">
+              {{ option.text }}
+            </button>
+          </section>
+        </label>
+      </div>
+
+      <div class="io">
+        <textarea :value="input" @input="updateInput"></textarea>
+        <textarea :value="compiledList"></textarea>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.min.js"></script>
+    <script src="js/script.js"></script>
+   </body>
+  </html>
